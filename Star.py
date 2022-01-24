@@ -11,9 +11,9 @@ class Star:
         self.maximumSize = maximumSize
         self.x = random.random() * self.displayWidth
         self.y = random.random() * self.displayHeight
-        self.acc = -0.001
+        self.acc = -0.01
         self.size = 1+ int(random.random() * self.maximumSize)
-        self.velx = -1 + int(-8 * self.size / self.maximumSize)
+        self.velx = -1 + int(-12 * self.size / self.maximumSize)
         self.color = (random.random() * 255,random.random() * 255,random.random()*255)
       
 
@@ -30,7 +30,7 @@ class Star:
 
             self.size = 1+ int(random.random() * self.maximumSize)
 
-            self.velx = -1 + int(-3 * self.size / self.maximumSize )
+            self.velx = -1 + int(-12 * self.size / self.maximumSize )
             self.color = (random.random() * 255,random.random() * 255,random.random()*255)
 
     def draw(self):

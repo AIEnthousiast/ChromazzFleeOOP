@@ -10,10 +10,14 @@ class Game:
         self.heigth = displayHeigth
         self.screen = pygame.display.set_mode((self.width,self.heigth))
 
-        self.player = Player()
+        self.player = Player(self.screen,self.width,self.heigth)
 
-        self.stars = [Star(self.screen,self.width,self.heigth,10) for _ in range(50)]
+        self.stars = [Star(self.screen,self.width,self.heigth,5) for _ in range(50)]
 
+
+
+    def movePlayer(self,dir):
+        self.player.move(dir)
 
 
     def update_game(self):
@@ -21,6 +25,9 @@ class Game:
         for star in self.stars:
             star.update()
             star.draw()
+
+        self.player.update()
+        self.player.draw()
 
 
         pygame.display.flip()
