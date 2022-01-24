@@ -37,7 +37,6 @@ class Enemy(pygame.sprite.Sprite):
        
 
     def update(self):
-        self.velx += self.accx
 
         self.x += self.velx
         self.rect = pygame.Rect(self.x,self.y,self.size,self.size)
