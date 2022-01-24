@@ -1,13 +1,14 @@
 import random
 import math
 import pygame
+from constants import *
 
 class Star:
-    def __init__(self,screen,displayWidth,displayHeight,maximumSize):
+    def __init__(self,screen,maximumSize):
         
         self.screen = screen
-        self.displayWidth = displayWidth
-        self.displayHeight = displayHeight
+        self.displayWidth = DISPLAY_WIDTH
+        self.displayHeight = DISPLAY_HEIGTH
         self.maximumSize = maximumSize
         self.x = random.random() * self.displayWidth
         self.y = random.random() * self.displayHeight
@@ -30,8 +31,9 @@ class Star:
 
             self.size = 1+ int(random.random() * self.maximumSize)
 
-            self.velx = -1 + int(-12 * self.size / self.maximumSize )
+            self.velx = -1 + int(-12 * self.size / self.maximumSize)
             self.color = (random.random() * 255,random.random() * 255,random.random()*255)
+    
 
     def draw(self):
         pygame.draw.circle(self.screen,self.color,(self.x,self.y),self.size)
