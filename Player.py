@@ -2,15 +2,17 @@ import pygame
 import random
 import math
 from constants import *
+from Projectile import Projectile
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self,screen,displayWidth,displayHeigth):
+    def __init__(self,screen,clock):
         pygame.sprite.Sprite.__init__(self) 
         self.screen = screen
+        self.clock = clock
 
-        self.displayWidth = displayWidth
-        self.displayHeigth = displayHeigth
+        self.displayWidth = DISPLAY_WIDTH
+        self.displayHeigth = DISPLAY_HEIGTH
         self.size = 120       
 
         self.image = pygame.transform.scale(pygame.image.load("images/Spaceships/2_Red.png").convert().convert_alpha(),(self.size,self.size))
@@ -27,9 +29,12 @@ class Player(pygame.sprite.Sprite):
         self.x = self.y = 0
         
         self.type = 1
-        self.canShoot = True
         self.maximum_life  = 20
+
         self.life = self.maximum_life
+
+        self.last_shoot = self.clock.get_ticks()
+
 
     def draw(self):
         self.screen.blit(self.image,self.rect)
@@ -47,12 +52,21 @@ class Player(pygame.sprite.Sprite):
     
     def move(self,dir):
 
-       
         if dir == "up":
             self.vely = -self.velyMax
 
         elif dir == "down":
             self.vely = self.velyMax
+
+  
+    def shoot(self):
+        current_time  = self.clock.get_ticks()
+
+        if (current_time - self.last_shoot) > FIRE_COOLDOWN:
+            self.last_shoot = current_time
+            return Projectile(self.size,self.y + self.size / 2)
+        
+        return None
 
     def stop(self):
         self.vely = 0

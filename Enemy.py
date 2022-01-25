@@ -31,14 +31,11 @@ class Enemy(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.velx =  - 1 + -random.random() * 4
-            
         
         self.life = 20
        
 
     def update(self):
-        self.velx += self.accx
-
         self.x += self.velx
         self.rect = pygame.Rect(self.x,self.y,self.size,self.size)
 
