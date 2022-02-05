@@ -7,7 +7,7 @@ from constants import *
 pygame.init()
 
 
-game = Game("Chromazz s'enfuit")
+game = Game("Chromazz s'endfuit")
 
 
 while game.getState() != GAME_STOP:
